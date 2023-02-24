@@ -1,0 +1,12 @@
+C:\repo\MyCleanArchitectureProject\src\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\repo\MyCleanArchitectureProject\src\Domain\bin\Debug\net7.0\Domain.dll
+C:\repo\MyCleanArchitectureProject\src\Domain\bin\Debug\net7.0\Domain.pdb
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.dll
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\Domain.pdb
+C:\repo\MyCleanArchitectureProject\src\Domain\obj\Debug\net7.0\ref\Domain.dll

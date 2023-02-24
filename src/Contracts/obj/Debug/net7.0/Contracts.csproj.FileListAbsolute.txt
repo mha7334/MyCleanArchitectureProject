@@ -1,0 +1,12 @@
+C:\repo\MyCleanArchitectureProject\src\Contracts\bin\Debug\net7.0\Contracts.deps.json
+C:\repo\MyCleanArchitectureProject\src\Contracts\bin\Debug\net7.0\Contracts.dll
+C:\repo\MyCleanArchitectureProject\src\Contracts\bin\Debug\net7.0\Contracts.pdb
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.csproj.AssemblyReference.cache
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.AssemblyInfoInputs.cache
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.AssemblyInfo.cs
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.csproj.CoreCompileInputs.cache
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.dll
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\refint\Contracts.dll
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\Contracts.pdb
+C:\repo\MyCleanArchitectureProject\src\Contracts\obj\Debug\net7.0\ref\Contracts.dll
