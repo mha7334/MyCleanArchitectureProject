@@ -1,13 +1,6 @@
-# MyCleanArchitectureProject
-Create CA Architecture (powershell script)
-
-
--------------
-Powershell Script
-
 ```
 # Define project name and root directory
-$slnName = "MyCleanArchitectureProject"
+$slnName = "CleanArchitectureWebApi"
 $rootDirectory = "c:\repo"
 
 # Define directories and subdirectories
@@ -51,18 +44,19 @@ try {
     dotnet add .\src\Application\ reference .\src\Domain\     
 
     #add few folders
-    New-Item -Force -Path (Join-Path $domainDirectory "Entities") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $domainDirectory "Commons") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $domainDirectory "Exceptions") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $domainDirectory "Enums") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $domainDirectory "Events") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $domainDirectory "ValueObjects") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
+    New-Item -Force -Path (Join-Path $domainDirectory "Entities") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $domainDirectory "Commons") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $domainDirectory "Exceptions") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $domainDirectory "Enums") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $domainDirectory "Events") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $domainDirectory "ValueObjects") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
 
-    New-Item -Force -Path (Join-Path $appDirectory "Commons") -Name "Test.cs" -ItemType "file" -Value "class Test {}"    
+    New-Item -Force -Path (Join-Path $appDirectory "Commons") -Name "Dummy.cs" -ItemType "file" -Value "class Test {}"    
     
-    New-Item -Force -Path (Join-Path $infraDirectory "Commons") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $infraDirectory "Services") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
-    New-Item -Force -Path (Join-Path $infraDirectory "Persistence") -Name "Test.cs" -ItemType "file" -Value "class Dummy {}"    
+    New-Item -Force -Path (Join-Path $infraDirectory "Commons") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $infraDirectory "Service") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    New-Item -Force -Path (Join-Path $infraDirectory "Persistence") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
+    
 
 
     #create xUnit projects
@@ -87,5 +81,4 @@ Write-Host "Clean Architecture C# project structure has been generated successfu
 # Output error message
 Write-Error "Error: $($Error[0].Exception.Message)"
 }
-
 ```
