@@ -40,8 +40,8 @@ try {
 
     #reference projects
     dotnet add .\src\Api\ reference .\src\Application\ .\src\Contracts\
-    dotnet add .\src\Infrastructure\ reference .\src\Application\
-    dotnet add .\src\Application\ reference .\src\Domain\     
+    dotnet add .\src\Infrastructure\ reference .\src\Contracts\
+    dotnet add .\src\Application\ reference .\src\Domain\ .\src\Contracts\
 
     #add few folders
     New-Item -Force -Path (Join-Path $domainDirectory "Entities") -Name "Dummy.cs" -ItemType "file" -Value "//dummy file"    
