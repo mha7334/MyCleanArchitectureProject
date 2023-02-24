@@ -5,7 +5,7 @@ Create CA Architecture (powershell script)
 -------------
 Powershell Script
 
-´´´
+```
 # Define project name and root directory
 $slnName = "MyCleanArchitectureProject"
 $rootDirectory = "c:\temp"
@@ -69,4 +69,4 @@ Write-Host "Clean Architecture C# project structure has been generated successfu
 Write-Error "Error: $($Error[0].Exception.Message)"
 }
 
-´´´
+```
