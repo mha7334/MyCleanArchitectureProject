@@ -1,4 +1,5 @@
-﻿using Application.Commons.Interfaces.Authentication;
+﻿using Application.Commons.Errors;
+using Application.Commons.Interfaces.Authentication;
 using Application.Commons.Interfaces.Persistence;
 using Application.Commons.Interfaces.Services;
 using Domain.Entities;
@@ -21,7 +22,7 @@ public class AuthenticationService : IAuthenticationService
         //check if user already exists
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given email address already exists");
+            throw new DuplicateEmailException("Duplicate email!");
         }
 
         // Create user (generate unique ID)
