@@ -1,4 +1,6 @@
-﻿namespace Application.Services.Authentication;
+﻿using Application.Services.Authentication;
+
+namespace Application.Commons.Interfaces.Authentication;
 
 public interface IAuthenticationService
 {

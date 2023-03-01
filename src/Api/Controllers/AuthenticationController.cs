@@ -1,4 +1,4 @@
-﻿using Application.Services.Authentication;
+﻿using Application.Commons.Interfaces.Authentication;
 using Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,10 +25,10 @@ public class AuthenticationController : Controller
             request.Password);
 
         var response = new AuthenticationResponse(
-            Guid.NewGuid(),
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
+            authResult.user.Id,
+            authResult.user.FirstName,
+            authResult.user.LastName,
+            authResult.user.Email,
             authResult.Token);
 
         return Ok(response);
@@ -37,13 +37,14 @@ public class AuthenticationController : Controller
     [HttpPost("login")]
     public AuthenticationResponse Login(LoginRequest request)
     {
-        AuthenticationResponse response = new(
-           Guid.NewGuid(),
-            "Muhammad",
-            "Asif",
-             "email",
-             "token");
+        var authResult = _authenticationService.Login(request.Email, request.Password);
 
+        AuthenticationResponse response = new(
+           authResult.user.Id,
+           authResult.user.FirstName,
+           authResult.user.LastName,
+           authResult.user.Email,
+           authResult.Token);
 
         return response;
     }

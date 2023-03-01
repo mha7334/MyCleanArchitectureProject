@@ -1,9 +1,7 @@
-﻿namespace Application.Services.Authentication
-{
-    public record AuthenticationResult(
-        Guid Id,
-        string FirstName,
-        string LastName,
-        string Email,
-        string Token);
-}
+﻿using Domain.Entities;
+
+namespace Application.Services.Authentication;
+
+public record AuthenticationResult(
+    User user,
+    string Token);

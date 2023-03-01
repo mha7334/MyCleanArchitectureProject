@@ -1,4 +1,5 @@
-﻿using Application.Services.Authentication;
+﻿using Application.Commons.Interfaces.Authentication;
+using Application.Services.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.DependencyInjection;
