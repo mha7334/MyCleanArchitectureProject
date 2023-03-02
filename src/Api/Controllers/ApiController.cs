@@ -1,4 +1,5 @@
-﻿using ErrorOr;
+﻿using Api.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,7 +10,7 @@ namespace Api.Controllers
         [NonAction]
         public IActionResult Problem(List<Error> errors)
         {
-            HttpContext.Items["errors"] = errors;
+            HttpContext.Items[HttpContextItemKeys.Errors] = errors;
 
             var firstError = errors[0];
 

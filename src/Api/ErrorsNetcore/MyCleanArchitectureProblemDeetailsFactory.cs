@@ -1,4 +1,5 @@
-﻿using ErrorOr;
+﻿using Api.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -60,7 +61,7 @@ public class MyCleanArchitectureProblemDetailsFactory : ProblemDetailsFactory
             problemDetails.Extensions["traceid"] = traceid;
         }
 
-        var errors = httpContext?.Items["errors"] as List<Error>;
+        var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
 
         if (errors is not null)
         {

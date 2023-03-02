@@ -37,9 +37,14 @@ public class AuthenticationController : ApiController
     {
         ErrorOr<AuthenticationResult> authResult = _authenticationService.Login(request.Email, request.Password);
 
+        //if (authResult.IsError && authResult.FirstError == Errors.Auth.InvalidCredentials))
+
+
         return authResult.Match(
                    authResult => Ok(MapAuthResult(authResult)),
                    errors => Problem(errors));
+        //errors => Problem(statusCode: StatusCodes.Status401Unauthorized, title: authResult.FirstError.Description);
+
     }
 
     private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
