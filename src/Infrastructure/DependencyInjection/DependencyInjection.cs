@@ -1,5 +1,5 @@
 ﻿using Application.Commons.Interfaces.Persistence;
-using Application.Commons.Interfaces.Services;
+using Application.Services.Authentication;
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
