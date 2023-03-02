@@ -1,8 +1,9 @@
-﻿using Application.Commons.Errors;
-using Application.Commons.Interfaces.Authentication;
+﻿using Application.Commons.Interfaces.Authentication;
 using Application.Commons.Interfaces.Persistence;
 using Application.Commons.Interfaces.Services;
+using Domain.Commons.Errors;
 using Domain.Entities;
+using ErrorOr;
 
 namespace Application.Services.Authentication;
 
@@ -17,12 +18,12 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         //check if user already exists
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new DuplicateEmailException("Duplicate email!");
+            return Errors.User.DuplicateEmail;
         }
 
         // Create user (generate unique ID)
@@ -44,17 +45,17 @@ public class AuthenticationService : IAuthenticationService
             token);
     }
 
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
         //Validate the user exists
         if (_userRepository.GetUserByEmail(email) is not User user)
         {
-            throw new Exception("User with given email does not exist");
+            return Errors.Auth.InvalidCredentials;
         }
 
         if (user.Password != password)
         {
-            throw new Exception("Invalid password");
+            return Errors.Auth.InvalidCredentials;
         }
 
         var token = _jwtTokenGenerator.GenerateToken(user);

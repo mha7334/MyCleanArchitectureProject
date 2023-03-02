@@ -1,11 +1,17 @@
+using Api.Errors;
 using Application.DependencyInjection;
 using Infrastructure.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddApplication();
-    builder.Services.AddInfrastructure(builder.Configuration);
+    builder.Services.AddApplication()
+                    .AddInfrastructure(builder.Configuration);
+
     builder.Services.AddControllers();
+
+    builder.Services.AddSingleton<ProblemDetailsFactory, MyCleanArchitectureProblemDetailsFactory>();
+
 
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();

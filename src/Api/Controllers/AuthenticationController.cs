@@ -1,12 +1,14 @@
 ﻿using Application.Commons.Interfaces.Authentication;
+using Application.Services.Authentication;
 using Contracts.Authentication;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController : Controller
+public class AuthenticationController : ApiController
 {
     private readonly IAuthenticationService _authenticationService;
 
@@ -18,34 +20,35 @@ public class AuthenticationController : Controller
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var authResult = _authenticationService.Register(
+        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
             request.Password);
 
-        var response = new AuthenticationResponse(
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors));
+
+    }
+
+    [HttpPost("login")]
+    public IActionResult Login(LoginRequest request)
+    {
+        ErrorOr<AuthenticationResult> authResult = _authenticationService.Login(request.Email, request.Password);
+
+        return authResult.Match(
+                   authResult => Ok(MapAuthResult(authResult)),
+                   errors => Problem(errors));
+    }
+
+    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+    {
+        return new AuthenticationResponse(
             authResult.user.Id,
             authResult.user.FirstName,
             authResult.user.LastName,
             authResult.user.Email,
             authResult.Token);
-
-        return Ok(response);
-    }
-
-    [HttpPost("login")]
-    public AuthenticationResponse Login(LoginRequest request)
-    {
-        var authResult = _authenticationService.Login(request.Email, request.Password);
-
-        AuthenticationResponse response = new(
-           authResult.user.Id,
-           authResult.user.FirstName,
-           authResult.user.LastName,
-           authResult.user.Email,
-           authResult.Token);
-
-        return response;
     }
 }
