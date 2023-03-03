@@ -1,4 +1,4 @@
-﻿using Application.Commons.Interfaces.Persistence;
+﻿using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication;
 using Domain.Commons.Errors;
 using Domain.Entities;

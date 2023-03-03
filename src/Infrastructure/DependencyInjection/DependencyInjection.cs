@@ -1,4 +1,4 @@
-﻿using Application.Commons.Interfaces.Persistence;
+﻿using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication;
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;

@@ -10,6 +10,7 @@ public static class DependencyInjection
     {
 
         services.AddControllers();
+
         services.AddSingleton<ProblemDetailsFactory, MyCleanArchitectureProblemDetailsFactory>();
 
         services.AddEndpointsApiExplorer();

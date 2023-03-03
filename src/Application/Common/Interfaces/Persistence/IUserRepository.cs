@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Application.Commons.Interfaces.Persistence;
+namespace Application.Common.Interfaces.Persistence;
 
 public interface IUserRepository
 {

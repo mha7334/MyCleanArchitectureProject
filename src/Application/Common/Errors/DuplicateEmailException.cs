@@ -1,4 +1,4 @@
-﻿namespace Application.Commons.Errors;
+﻿namespace Application.Common.Errors;
 
 public class DuplicateEmailException : Exception
 {
