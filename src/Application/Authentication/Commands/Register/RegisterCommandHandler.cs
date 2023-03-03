@@ -19,6 +19,8 @@ namespace Application.Authentication.Commands.Register
         }
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             if (_userRepository.GetUserByEmail(command.Email) is not null)
             {
                 return Errors.User.DuplicateEmail;
@@ -27,8 +29,8 @@ namespace Application.Authentication.Commands.Register
             // Create user (generate unique ID)
             User user = new()
             {
-                FirstName = command.Firstname,
-                LastName = command.Lastname,
+                FirstName = command.FirstName,
+                LastName = command.LastName,
                 Email = command.Email,
                 Password = command.Password
             };

@@ -4,8 +4,8 @@ using MediatR;
 
 namespace Application.Authentication.Commands.Register
 {
-    public record RegisterCommand(string Firstname,
-                                  string Lastname,
+    public record RegisterCommand(string FirstName,
+                                  string LastName,
                                   string Email,
                                   string Password) : IRequest<ErrorOr<AuthenticationResult>>;
 
