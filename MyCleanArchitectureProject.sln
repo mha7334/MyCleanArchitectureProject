@@ -28,6 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9936FF1-EABA-48ED-B607-02CCDF094A22}"
 	ProjectSection(SolutionItems) = preProject
 		Api.md = Api.md
+		requests.http = requests.http
 	EndProjectSection
 EndProject
 Global

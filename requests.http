@@ -1,0 +1,32 @@
+# VARIABLES
+@hostname = localhost
+@port = 5032
+@host = http://{{hostname}}:{{port}}
+@contentType = application/json
+@token =  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YzYzYzlkMy0yM2NiLTRkZGEtODk0YS1kZjdiMzIzNzBmOGQiLCJnaXZlbl9uYW1lIjoiTXVoYW1tYWQiLCJmYW1pbHlfbmFtZSI6IkFzaWYiLCJqdGkiOiJkNmQ4MjAyMS01YTA3LTQ4OTUtODhmYy1mMzI2ZjNmNTliYzIiLCJleHAiOjE2Nzc5NzIyNTUsImlzcyI6ImNhdGVzdCIsImF1ZCI6ImNhdGVzdCJ9._4Cr2luhumxRkhBMEg-nLApIbj8UuPPabgnQeNjcXuo
+
+# dinners list
+GET {{host}}/dinners http/1.1
+Authorization: Bearer {{token}}
+
+
+### register
+POST {{host}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Muhammad",
+  "lastName": "Asif",
+  "email": "m.asif@live.dk",
+  "password": "test11"
+}
+
+### register
+POST {{host}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "m.asif@live.dk",
+  "password": "test11"
+}
+

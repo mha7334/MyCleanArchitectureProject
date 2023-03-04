@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
+
         services.AddMappings();
 
         return services;
