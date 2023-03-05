@@ -3,14 +3,11 @@
 @port = 5032
 @host = http://{{hostname}}:{{port}}
 @contentType = application/json
-@token =  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YzYzYzlkMy0yM2NiLTRkZGEtODk0YS1kZjdiMzIzNzBmOGQiLCJnaXZlbl9uYW1lIjoiTXVoYW1tYWQiLCJmYW1pbHlfbmFtZSI6IkFzaWYiLCJqdGkiOiJkNmQ4MjAyMS01YTA3LTQ4OTUtODhmYy1mMzI2ZjNmNTliYzIiLCJleHAiOjE2Nzc5NzIyNTUsImlzcyI6ImNhdGVzdCIsImF1ZCI6ImNhdGVzdCJ9._4Cr2luhumxRkhBMEg-nLApIbj8UuPPabgnQeNjcXuo
-
-# dinners list
-GET {{host}}/dinners http/1.1
-Authorization: Bearer {{token}}
+@token =  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjQ2Mzg5My0wMDFkLTRjYjItYTUzMy05MTU4NWY5NDc1NzAiLCJnaXZlbl9uYW1lIjoiTXVoYW1tYWQiLCJmYW1pbHlfbmFtZSI6IkFzaWYiLCJqdGkiOiIwN2JkZjhlYS01YjY4LTQ1MmUtYjU3ZS1mODM1YzI5YWNkYWIiLCJleHAiOjE2NzgwMDc1MTUsImlzcyI6ImNhdGVzdCIsImF1ZCI6ImNhdGVzdCJ9.CtnMgPKhV-3G3K6I3E3CrNeH3q8n9ecnnTVE75_gc98
 
 
 ### register
+
 POST {{host}}/auth/register
 Content-Type: {{contentType}}
 
@@ -21,7 +18,8 @@ Content-Type: {{contentType}}
   "password": "test11"
 }
 
-### register
+### login
+
 POST {{host}}/auth/login
 Content-Type: {{contentType}}
 
@@ -29,4 +27,11 @@ Content-Type: {{contentType}}
   "email": "m.asif@live.dk",
   "password": "test11"
 }
+
+### dinners list
+
+GET {{host}}/dinners http/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+User-Agent: rest-client
 
