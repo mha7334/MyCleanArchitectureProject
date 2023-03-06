@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication;
 using Domain.Commons.Errors;
-using Domain.Entities;
+using Domain.User;
 using ErrorOr;
 using MediatR;
 
@@ -27,13 +27,12 @@ namespace Application.Authentication.Commands.Register
             }
 
             // Create user (generate unique ID)
-            User user = new()
-            {
-                FirstName = command.FirstName,
-                LastName = command.LastName,
-                Email = command.Email,
-                Password = command.Password
-            };
+            User user = User.Create(
+             command.FirstName,
+             command.LastName,
+             command.Email,
+             command.Password
+            );
 
             _userRepository.Add(user);
 

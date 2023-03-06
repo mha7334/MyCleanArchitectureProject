@@ -3,6 +3,13 @@
 ## Menu
 
 ```csharp
+class Menu
+{
+	Menu Create();
+	void AddDinner(Dinner dinner);
+	void RemoveDinner(Dinner remove);
+	void UpdateSection(MenuSection section);
+}
 ```
 
 ```json
@@ -10,7 +17,7 @@
 	"id": "00000000-0000-0000-0000-000000000000",
 	"name": "Menu1",
 	"description": "menu 1 descritioin",
-	"averageRating",
+	"averageRating" = 4.5,
 	"sections": [
 	{
 		"id": "00000000-0000-0000-0000-000000000000",
@@ -36,5 +43,7 @@
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",
 	],
+	"createdDateTime": "2020-01-01T00:00:00.00000000Z",
+	"updatedDateTime": "2020-01-01T00:00:00.00000000Z",
 }
 ```

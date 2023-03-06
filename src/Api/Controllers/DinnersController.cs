@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
-    public class DinnersController : ControllerBase
+    public class DinnersController : ApiController
     {
         [HttpGet]
         [Authorize]

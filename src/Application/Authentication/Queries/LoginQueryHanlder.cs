@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication;
 using Domain.Commons.Errors;
-using Domain.Entities;
+using Domain.User;
 using ErrorOr;
 using MediatR;
 
