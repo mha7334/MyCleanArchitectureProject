@@ -1,5 +1,7 @@
-using Api.DependencyInjection;
-using Application.DependencyInjection;
+using Api;
+
+using Application;
+
 using Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddPresentation()
                     .AddApplication()
                     .AddInfrastructure(builder.Configuration);
-
 }
 
 var app = builder.Build();

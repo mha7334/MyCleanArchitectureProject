@@ -3,13 +3,14 @@
 @port = 5032
 @host = http://{{hostname}}:{{port}}
 @contentType = application/json
-@token =  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjQ2Mzg5My0wMDFkLTRjYjItYTUzMy05MTU4NWY5NDc1NzAiLCJnaXZlbl9uYW1lIjoiTXVoYW1tYWQiLCJmYW1pbHlfbmFtZSI6IkFzaWYiLCJqdGkiOiIwN2JkZjhlYS01YjY4LTQ1MmUtYjU3ZS1mODM1YzI5YWNkYWIiLCJleHAiOjE2NzgwMDc1MTUsImlzcyI6ImNhdGVzdCIsImF1ZCI6ImNhdGVzdCJ9.CtnMgPKhV-3G3K6I3E3CrNeH3q8n9ecnnTVE75_gc98
+@hostId = "hid"
+@token =  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJEb21haW4uVXNlci5WYWx1ZU9iamVjdHMuVXNlcklkIiwiZ2l2ZW5fbmFtZSI6InN0cmluZyIsImZhbWlseV9uYW1lIjoic3RyaW5nIiwianRpIjoiN2I3YWI4MjQtNTE3Mi00ZmFhLWEzZDgtOWVhN2VmMDgzZDhjIiwiZXhwIjoxNjc4MTQwOTIwLCJpc3MiOiJjYXRlc3QiLCJhdWQiOiJjYXRlc3QifQ.0hywXg1iFHXK2nzJ_ieHsgUreYXujqpLUuCNMOEx4JA
 
 
 ### register
 
 POST {{host}}/auth/register
-Content-Type: {{contentType}}
+Content-Type: {{contentType}}´+
 
 {
   "firstName": "Muhammad",
@@ -35,3 +36,25 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 User-Agent: rest-client
 
+### Menu
+
+POST {{host}}/hosts/{{hostId}}/menus
+Authorization: {{token}}
+Content-Type: {{contentType}}
+
+{
+  "name": "string",
+  "description": "string",
+  "sections": [
+    {
+      "name": "string",
+      "description": "string",
+      "items": [
+        {
+          "name": "string",
+          "description": "string"
+        }
+      ]
+    }
+  ]
+}

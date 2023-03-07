@@ -1,8 +1,9 @@
 ﻿using Api.Common.Mappings;
 using Api.Errors;
+
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace Api.DependencyInjection;
+namespace Api;
 
 public static class DependencyInjection
 {

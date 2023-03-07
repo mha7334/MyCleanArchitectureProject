@@ -1,7 +1,8 @@
 ﻿using Application.Common.Interfaces.Persistence;
+
 using Domain.User;
 
-namespace Infrastructure.Persistence;
+namespace Infrastructure.Persistence.Repositories;
 
 internal class UserRepository : IUserRepository
 {

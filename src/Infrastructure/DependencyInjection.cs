@@ -1,13 +1,19 @@
-﻿using Application.Common.Interfaces.Persistence;
+﻿using System.Text;
+
+using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication;
+
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;
+using Infrastructure.Persistence.Repositories;
 using Infrastructure.Services;
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+
 
 namespace Infrastructure.DependencyInjection;
 
@@ -16,11 +22,20 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddAuth(configuration);
+        services.AddPersistence();
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();
-        services.AddSingleton<IUserRepository, UserRepository>();
         return services;
     }
 
+    public static IServiceCollection AddPersistence(this IServiceCollection services)
+    {
+        services.AddDbContext<MyCaDbContext>(options =>
+                options.UseSqlServer());
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IMenuRepository, MenuRepository>();
+
+        return services;
+    }
     public static IServiceCollection AddAuth(this IServiceCollection services,
                                              ConfigurationManager configuration)
     {

@@ -1,4 +1,5 @@
 ﻿using Domain.Commons.Models;
+using Domain.Commons.ValueObjects.Rating;
 using Domain.Dinner.ValueObjects;
 using Domain.Host.ValueObjects;
 using Domain.Menu.Entities;
@@ -10,24 +11,25 @@ namespace Domain.Menu;
 public sealed class Menu : AggregateRoot<MenuId>
 
 {
-    private Menu(MenuId id,
+    private Menu(MenuId menuId,
                  string name,
                  string descriptoin,
                  HostId hostId,
+                 List<MenuSection> sections,
                  DateTime createdDateTime,
-                 DateTime updatedDateTime
-        )
-        : base(id)
+                 DateTime updatedDateTime)
+        : base(menuId)
     {
         Name = name;
         Description = descriptoin;
         HostId = hostId;
+        _sections = sections;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
     public string Name { get; }
     public string Description { get; }
-    public float AverageRating { get; }
+    public AverageRating AverageRating { get; }
 
     public HostId HostId { get; }
 
@@ -35,9 +37,9 @@ public sealed class Menu : AggregateRoot<MenuId>
 
     public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewIds.AsReadOnly();
 
-    private List<DinnerId> _dinners = new();
+    private List<DinnerId> _dinnerIds = new();
 
-    public IReadOnlyList<DinnerId> Dinners => _dinners.AsReadOnly();
+    public IReadOnlyList<DinnerId> Dinners => _dinnerIds.AsReadOnly();
 
 
     public DateTime CreatedDateTime { get; }
@@ -49,12 +51,14 @@ public sealed class Menu : AggregateRoot<MenuId>
 
     public static Menu Create(string name,
                               string description,
-                              HostId hostId)
+                              HostId hostId,
+                              List<MenuSection> sections)
     {
-        return new Menu(MenuId.CreateUnique(),
+        return new(MenuId.CreateUnique(),
                         name,
                         description,
                         hostId,
+                        sections,
                         DateTime.UtcNow,
                         DateTime.UtcNow);
     }

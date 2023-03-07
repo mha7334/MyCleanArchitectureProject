@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{C6F7FD1A-4
 	ProjectSection(SolutionItems) = preProject
 		Api.md = Api.md
 		docs\ModelingDomain.png = docs\ModelingDomain.png
+		..\..\Users\Muas\Downloads\tables.png = ..\..\Users\Muas\Downloads\tables.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{1BA82F22-F523-46AF-8D5F-FE709D6E46A9}"

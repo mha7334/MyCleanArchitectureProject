@@ -1,8 +1,13 @@
 ﻿using Application.Authentication.Commands.Register;
 using Application.Authentication.Queries;
+
 using Contracts.Authentication;
+
 using MapsterMapper;
+
 using MediatR;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -11,20 +16,21 @@ namespace Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IMediator _mediatr;
+    private readonly ISender _mediator;
     private readonly IMapper _mapper;
 
-    public AuthenticationController(IMediator mediatR, IMapper mapper)
+    public AuthenticationController(ISender mediator, IMapper mapper)
     {
-        _mediatr = mediatR;
+        _mediator = mediator;
         _mapper = mapper;
     }
 
     [HttpPost("register")]
+    [AllowAnonymous]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
-        var authResult = await _mediatr.Send(command);
+        var authResult = await _mediator.Send(command);
 
         return authResult.Match(
             authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
@@ -37,16 +43,10 @@ public class AuthenticationController : ApiController
     {
         var query = _mapper.Map<LoginQuery>(request);
 
-        var authResult = await _mediatr.Send(query);
-
-
-        //if (authResult.IsError && authResult.FirstError == Errors.Auth.InvalidCredentials))
-
+        var authResult = await _mediator.Send(query);
 
         return authResult.Match(
                    authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
                    errors => Problem(errors));
-        //errors => Problem(statusCode: StatusCodes.Status401Unauthorized, title: authResult.FirstError.Description);
-
     }
 }
