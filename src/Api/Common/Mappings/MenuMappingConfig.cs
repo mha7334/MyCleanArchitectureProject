@@ -19,7 +19,7 @@ public class MenuMappingConfig : IRegister
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.AverageRating, src => src.AverageRating.Value)
             .Map(dest => dest.HostId, src => src.HostId.Value)
-            .Map(dest => dest.DinnerIds, src => src.Dinners.Select(d => d.Value))
+            .Map(dest => dest.DinnerIds, src => src.DinnerIds.Select(d => d.Value))
             .Map(dest => dest.MenuReviewIds, src => src.MenuReviewIds.Select(m => m.Value));
 
 

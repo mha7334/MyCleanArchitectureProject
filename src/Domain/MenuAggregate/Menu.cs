@@ -16,6 +16,7 @@ public sealed class Menu : AggregateRoot<MenuId>
                  string descriptoin,
                  HostId hostId,
                  List<MenuSection> sections,
+                 AverageRating rating,
                  DateTime createdDateTime,
                  DateTime updatedDateTime)
         : base(menuId)
@@ -24,14 +25,15 @@ public sealed class Menu : AggregateRoot<MenuId>
         Description = descriptoin;
         HostId = hostId;
         _sections = sections;
+        AverageRating = rating;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
-    public string Name { get; }
-    public string Description { get; }
-    public AverageRating AverageRating { get; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public AverageRating AverageRating { get; private set; }
 
-    public HostId HostId { get; }
+    public HostId HostId { get; private set; }
 
     private List<MenuReviewId> _menuReviewIds = new();
 
@@ -39,11 +41,10 @@ public sealed class Menu : AggregateRoot<MenuId>
 
     private List<DinnerId> _dinnerIds = new();
 
-    public IReadOnlyList<DinnerId> Dinners => _dinnerIds.AsReadOnly();
+    public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
 
-
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     private readonly List<MenuSection> _sections = new();
 
@@ -59,7 +60,12 @@ public sealed class Menu : AggregateRoot<MenuId>
                         description,
                         hostId,
                         sections,
+                        AverageRating.CreateNew(),
                         DateTime.UtcNow,
                         DateTime.UtcNow);
     }
+
+#pragma warning disable CS8618
+    private Menu() { }
+#pragma warning restore CS8618
 }

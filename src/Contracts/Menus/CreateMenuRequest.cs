@@ -1,6 +1,7 @@
 ﻿namespace Contracts.Menus;
 
 public record CreateMenuRequest(
+    Guid HostId,
     string Name,
     string Description,
     List<MenuSectionRequest> Sections);

@@ -22,15 +22,18 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddAuth(configuration);
-        services.AddPersistence();
+        services.AddPersistence(configuration);
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();
         return services;
     }
 
-    public static IServiceCollection AddPersistence(this IServiceCollection services)
+    public static IServiceCollection AddPersistence(this IServiceCollection services,
+                                                    ConfigurationManager configuration)
     {
         services.AddDbContext<MyCaDbContext>(options =>
-                options.UseSqlServer());
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), optionsBuilder =>
+                    optionsBuilder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
+
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IMenuRepository, MenuRepository>();
 

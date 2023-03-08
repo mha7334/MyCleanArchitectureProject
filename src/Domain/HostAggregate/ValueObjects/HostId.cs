@@ -4,7 +4,7 @@ namespace Domain.Host.ValueObjects
 {
     public class HostId : ValueObject
     {
-        public Guid Value { get; }
+        public Guid Value { get; private set; }
 
         private HostId(Guid value)
         {
